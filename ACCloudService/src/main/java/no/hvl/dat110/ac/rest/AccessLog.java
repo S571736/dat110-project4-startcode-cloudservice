@@ -27,8 +27,6 @@ public class AccessLog {
 		
 	// TODO: retrieve a specific access entry 
 	public AccessEntry get(int id) {
-
-
 		return log.get(id);
 		
 	}
@@ -41,6 +39,7 @@ public class AccessLog {
 	}
 	
 	// TODO: JSON representation of the access log
+
 	public String toJson () {
     	
 		String json = gson.toJson(log);
