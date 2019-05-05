@@ -34,12 +34,15 @@ public class App {
         // for basic testing purposes
         get("/accessdevice/hello", (req, res) -> gson.toJson("IoT Access Control Device"));
 
+
         post("/accessdevice/log", (req, res) -> accesslog.add(req.body()));
         get("/accessdevice/log", (req, res) -> accesslog.toJson());
-        get("/accessdevice/log:id", (req, res) -> gson.toJson(accesslog.get(Integer.parseInt(req.params(":id")))));
+        get("/accessdevice/log/:id", (req, res) -> gson.toJson(accesslog.get(Integer.parseInt(req.params(":id")))));
+
         delete("/accessdevice/log", (req, res) -> {
             accesslog.clear();
             return gson.toJson("Log is now clear");
+
         });
         // TODO: implement the routes required for the access control service
 
