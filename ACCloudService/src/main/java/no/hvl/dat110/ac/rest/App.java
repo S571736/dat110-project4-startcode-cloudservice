@@ -48,8 +48,11 @@ public class App {
 
         get("/accessdevice/code", (req, res) -> gson.toJson(accesscode));
         put("/accessdevice/code", (req, res) -> {
-            accesscode.setAccesscode(req.queryParams("accesscode"));
-            return gson.toJson("Success, added new code!");
+
+            accesscode = gson.fromJson(req.body(), AccessCode.class);
+            accesscode.setAccesscode(accesscode.getAccesscode());
+
+            return req.body();
         });
 
     }
